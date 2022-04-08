@@ -6,6 +6,10 @@ public class Player : MonoBehaviour
 {
     public float speed = .05f;
     public bool player1 = true;
+    public bool handLFull = false;
+    public bool handRFull = false;
+    public GameObject[] holding = new GameObject[2];
+
     // Start is called before the first frame update
     void Start()
     {
