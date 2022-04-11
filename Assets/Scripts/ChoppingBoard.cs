@@ -54,7 +54,10 @@ public class ChoppingBoard : MonoBehaviour
             {
                 foreach (GameObject vegetable in vegetables)
                 {
-                    saladScr.Ingredients.Add(vegetable.gameObject.name);
+                    // trims name to be a single identifying letter
+                    string[] words = vegetable.name.Split(' ');
+                    string[] name = words[1].Split('(');                   
+                    saladScr.Ingredients.Add(name[0]);
                 }
 
                 GameObject currentSalad = GameObject.Instantiate(salad);
@@ -70,7 +73,6 @@ public class ChoppingBoard : MonoBehaviour
                 player.HandLFull = true;
                 saladScr.Ingredients.Clear();
 
-                // removes ingredients from chopping board
                 // removes ingredients from chopping board
                 foreach (GameObject vegetable in vegetables)
                 {

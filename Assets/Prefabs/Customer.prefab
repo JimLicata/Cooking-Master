@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 674543454107933215}
   - component: {fileID: 674543454107933200}
   - component: {fileID: 674543454107933201}
-  - component: {fileID: 674543454107933214}
+  - component: {fileID: 1403197375}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674543454107933202}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3, y: 3.66, z: 0}
   m_LocalScale: {x: 0.09072675, y: 0.09072675, z: 0.09072675}
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a63d5d6128e6889489bfd7fbd3c41071, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
---- !u!114 &674543454107933214
+--- !u!114 &1403197375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,8 +118,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 674543454107933202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd4bffd186eb2c5479e9f4796d294a42, type: 3}
+  m_Script: {fileID: 11500000, guid: e8128ca09e6d7b14680d2e3f4a3ce324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   p1: {fileID: 0}
   p2: {fileID: 0}
+  textComponent: {fileID: 0}

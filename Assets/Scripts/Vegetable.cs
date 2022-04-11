@@ -9,8 +9,7 @@ public class Vegetable : MonoBehaviour
     bool p1triggered, p2triggered = false;
     bool inLeftHand, inRightHand = false;
     bool isChopped = false;
-    bool isSalad = false;
-    List<string> ingredients = new List<string>();
+    [SerializeField]List<string> ingredients = new List<string>();
 
     // properties
     public bool P1triggered
@@ -37,11 +36,6 @@ public class Vegetable : MonoBehaviour
     {
         get { return isChopped; }
         set { isChopped = value; }
-    }
-    public bool IsSalad
-    {
-        get { return isSalad; }
-        set { isSalad = value; }
     }
     public List<string> Ingredients
     {
