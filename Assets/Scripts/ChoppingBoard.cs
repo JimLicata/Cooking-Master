@@ -9,7 +9,9 @@ public class ChoppingBoard : MonoBehaviour
     Vegetable saladScr;
     bool p1triggered, p2triggered = false;
     bool saladComplete = false;
+    bool occupied = false;
     List<GameObject> vegetables = new List<GameObject>();
+
 
     void Start()
     {
@@ -115,10 +117,11 @@ public class ChoppingBoard : MonoBehaviour
     {
         if (!player.Chopping)
         {
-            if (player.Holding.Count > 0 && player.Holding[0].GetComponent<Vegetable>().IsChopped == false) // checks if the player is holding anything
+            // checks if the player is holding anything and if the board isn't already in use
+            if (player.Holding.Count > 0 && player.Holding[0].GetComponent<Vegetable>().IsChopped == false && !occupied) 
             {
                 player.Chopping = true;
-
+                occupied = true;
                 // determines which hand the first vegetable is in and empties it
                 if (player.Holding[0].GetComponent<Vegetable>().InLeftHand)
                 {
@@ -153,10 +156,11 @@ public class ChoppingBoard : MonoBehaviour
                
                 player.Holding.RemoveAt(0);
 
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(4);
                 // TODO change sprite to chopped sprite here 
                 player.Chopping = false;
                 saladComplete = true;
+                occupied = false;
             }
         }
     }

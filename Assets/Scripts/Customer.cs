@@ -9,10 +9,11 @@ public class Customer : MonoBehaviour
     // variables
     [SerializeField] Player p1, p2;
     [SerializeField] TextMeshPro orderText, timerText;
+    [SerializeField] GameManager gm;
     bool p1triggered, p2triggered = false;
     List<string> order = new List<string>();
     string[] vegetables = new string[] { "A", "B", "C", "D", "E", "F" };
-    float timer = 30;
+    float timer = 60;
     
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class Customer : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+            gm.CustomerCount--;
             // lose points
         }
     }
