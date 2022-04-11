@@ -4,56 +4,39 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
-    [SerializeField] private GameObject p1;
-    [SerializeField] private GameObject p2;
-    private GameObject p1LHand, p1RHand, p2LHand, p2RHand;
-    private Player p1Scr, p2Scr;
-    private bool p1triggered, p2triggered = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        p1LHand = p1.transform.GetChild(0).gameObject;
-        p1RHand = p1.transform.GetChild(1).gameObject;
-
-        p2LHand = p2.transform.GetChild(0).gameObject;
-        p2RHand = p2.transform.GetChild(1).gameObject;
-
-        p1Scr = p1.GetComponent<Player>();
-        p2Scr = p2.GetComponent<Player>();
-    }
+    //variables
+    [SerializeField] Player p1, p2;
+    bool p1triggered, p2triggered = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("f") && p1triggered)
-        { 
-            if (p1Scr.handLFull)
-            {
-                Destroy(p1Scr.holding[0]);
-                p1Scr.handLFull = false;
-            }
-
-            else if (p1Scr.handRFull)
-            {
-                Destroy(p1Scr.holding[1]);
-                p1Scr.handRFull = false;
-            }
+        if (Input.GetKeyDown("e") && p1triggered)
+        {
+            ThrowOut(p1);
         }
 
-        if (Input.GetKeyDown(";") && p2triggered)
+        if (Input.GetKeyDown("o") && p2triggered)
         {
-            if (p2Scr.handLFull)
-            {
-                Destroy(p2Scr.holding[0]);
-                p2Scr.handLFull = false;
-            }
+            ThrowOut(p2);
+        }
+    }
 
-            else if (p2Scr.handRFull)
+    void ThrowOut(Player player)
+    {
+        if (player.Holding.Count > 0) // checks if the player is holding anything
+        {
+            // determines which hand the first vegetable is in and empties it
+            if (player.Holding[0].GetComponent<Vegetable>().InLeftHand)
             {
-                Destroy(p2Scr.holding[1]);
-                p2Scr.handRFull = false;
+                player.HandLFull = false;
             }
+            else if (player.Holding[0].GetComponent<Vegetable>().InRightHand)
+            {
+                player.HandRFull = false;
+            }
+            Destroy(player.Holding[0]);
+            player.Holding.RemoveAt(0);
         }
     }
 
