@@ -40,7 +40,7 @@ public class ChoppingBoard : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(";") && p1triggered)
+        if (Input.GetKeyDown(";") && p2triggered)
         {
             PickUp(p2);
         }

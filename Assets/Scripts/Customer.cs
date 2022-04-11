@@ -8,10 +8,11 @@ public class Customer : MonoBehaviour
 {
     // variables
     [SerializeField] Player p1, p2;
-    [SerializeField] TextMeshPro textComponent;
+    [SerializeField] TextMeshPro orderText, timerText;
     bool p1triggered, p2triggered = false;
     List<string> order = new List<string>();
     string[] vegetables = new string[] { "A", "B", "C", "D", "E", "F" };
+    float timer = 30;
     
 
     // Start is called before the first frame update
@@ -31,6 +32,17 @@ public class Customer : MonoBehaviour
         if (Input.GetKeyDown("o") && p2triggered)
         {
             Place(p2);
+        }
+
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            timerText.text = string.Format("{0:00}", timer);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            // lose points
         }
     }
 
@@ -60,7 +72,7 @@ public class Customer : MonoBehaviour
 
         foreach (string ingredient in order)
         {
-            textComponent.text += ingredient; // updates the text to reflect the order
+            orderText.text += ingredient; // updates the text to reflect the order
         }
     }
 
@@ -99,6 +111,7 @@ public class Customer : MonoBehaviour
 
                 Destroy(player.Holding[0]);
                 player.Holding.RemoveAt(0);
+                gameObject.SetActive(false);
             }
             else
             {
