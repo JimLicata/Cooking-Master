@@ -23,6 +23,7 @@ public class Customer : MonoBehaviour
         startTime = 60;
         anger = 1;
         order.Clear();
+        orderText.text = "";
         GenerateOrder();
     }
 
@@ -54,13 +55,14 @@ public class Customer : MonoBehaviour
         {
             gameObject.SetActive(false);
             gm.CustomerCount--;
-            p1.Score -= 20;
-            p2.Score -= 20;
+            p1.Score -= 10;
+            p2.Score -= 10;
         }
     }
 
     void GenerateOrder()
     {
+
         int num = Random.Range(2, 4); // determins how many ingredients
         if (num == 2)
         {
@@ -144,7 +146,7 @@ public class Customer : MonoBehaviour
             else
             {
                 anger = 2; // customer is angry
-                player.Score -= 10;
+                player.Score -= 30;
             }
         }
     }
