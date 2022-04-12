@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     // variables
     [SerializeField] Player p1, p2;
     [SerializeField] Customer[] customers = new Customer[5];
-    int customerCount = 0;
+    public int customerCount = 0;
 
     // properties
     public int CustomerCount
@@ -19,9 +19,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        customers[Random.Range(0, 5)].gameObject.SetActive(true);
-        customerCount++;
-        StartCoroutine(NewCustomer());
+        AddCustomer(Random.Range(0, 5));
     }
 
     // Update is called once per frame
@@ -31,6 +29,12 @@ public class GameManager : MonoBehaviour
         if (customerCount == 0)
         {
             AddCustomer(Random.Range(0, 5));
+        }
+
+        // checks to see if the game is over
+        if (p1.GameOver && p2.GameOver)
+        {
+            // End Game
         }
     }
 
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     void AddCustomer(int index)
     {
+        customers[index].Initialize();
         customers[index].gameObject.SetActive(true);
         customerCount++;
         StartCoroutine(NewCustomer());

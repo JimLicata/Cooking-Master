@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChoppingBoard : MonoBehaviour
 {
+    // variables
     [SerializeField] Player p1, p2;
     [SerializeField] GameObject salad;
     Vegetable saladScr;
@@ -21,6 +22,7 @@ public class ChoppingBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // player 1 inputs
         if (Input.GetKeyDown("e") && p1triggered)
         {
             if (vegetables.Count < 3)
@@ -34,6 +36,7 @@ public class ChoppingBoard : MonoBehaviour
             PickUp(p1);
         }
 
+        // player 2 inputs
         if (Input.GetKeyDown("o") && p2triggered)
         {
             if (vegetables.Count < 3)
@@ -122,6 +125,7 @@ public class ChoppingBoard : MonoBehaviour
             {
                 player.Chopping = true;
                 occupied = true;
+                player.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 0);
                 // determines which hand the first vegetable is in and empties it
                 if (player.Holding[0].GetComponent<Vegetable>().InLeftHand)
                 {
@@ -157,10 +161,20 @@ public class ChoppingBoard : MonoBehaviour
                 player.Holding.RemoveAt(0);
 
                 yield return new WaitForSeconds(4);
-                // TODO change sprite to chopped sprite here 
+ 
                 player.Chopping = false;
                 saladComplete = true;
                 occupied = false;
+
+                // resets color
+                if (player.Player1)
+                {
+                    player.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1);
+                }
+                else
+                {
+                    player.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
+                }
             }
         }
     }

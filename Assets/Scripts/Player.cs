@@ -1,23 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     // variables
     [SerializeField] bool player1 = true;
-    float speed = .05f;  
-    bool handLFull = false;
-    bool handRFull = false;
+    [SerializeField] TextMeshProUGUI timerText, scoreText;
     GameObject leftHand, rightHand;
     List<GameObject> holding = new List<GameObject>();
+    float speed = .05f;  
+    bool handLFull = false;
+    bool handRFull = false;  
     bool chopping = false;
+    float timer = 180;
+    bool gameOver = false;
+    int score = 0;
 
     // properties
+    public bool Player1
+    {
+        get { return player1; }
+    }
+    public bool GameOver
+    {
+        get { return gameOver; }
+    }
+    public int Score
+    {
+        get { return score; }
+        set { score = value; }
+    }
     public float Speed
     {
         get { return speed; }
         set { speed = value; }
+    }
+    public float Timer
+    {
+        get { return timer; }
+        set { timer = value; }
     }
     public bool HandLFull
     {
@@ -108,5 +131,18 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            timerText.text = string.Format("Time: {0:00}", timer);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            gameOver = true;            
+        }
+
+        scoreText.text = string.Format("Score: {0:0}", score);
     }  
 }
