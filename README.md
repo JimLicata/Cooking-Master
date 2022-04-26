@@ -3,11 +3,23 @@
 This program is a simple salad making game, where the goal is to make vegetable combinations by chopping them up, and serving them to your customers. 
 
 Controls:
-P1:                                                                 P2:
-Move:    Interact:  Pick up combo from board:                       Move:     Interact:    Pick up combo from board:
- W        E             F                                             I          O              ;
-ASD                                                                  JKL
 
+P1:                                                                 
+
+Move:   "WASD"           
+ 
+Interact: "E"            
+
+Pick up combo from board: "F"                                             
+                                                                
+P2:
+
+Move:   "IJKL"
+
+Interact:    "O"
+
+Pick up combo from board: ";"
+ 
 
 Features:
   "Couch Co-Op" Two players can play on the same keyboard
